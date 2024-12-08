@@ -1,14 +1,15 @@
-import React from 'react';
-import { useForm, Controller } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useNavigate } from 'react-router-dom';
-import { Box, Button, Paper, TextField, Typography } from '@mui/material';
-import * as yup from 'yup';
-import { signupSchema } from './signup.schema';
+import React from "react";
+import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
+import { Box, Button, TextField, Typography } from "@mui/material";
+import { signupSchema } from "./signup.schema";
+import { useAuthActions } from "../../hooks/use-auth-actions.hook";
 
 // Define the signup schema for validation
 
 const SignupForm = () => {
+  const { handleSignup } = useAuthActions();
   const navigate = useNavigate();
 
   const {
@@ -16,27 +17,32 @@ const SignupForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    mode: 'all',
+    mode: "all",
     resolver: yupResolver(signupSchema),
     defaultValues: {
-      email: '',
-      password: '',
-      confirmPassword: '',
+      email: "",
+      password: "",
+      confirmPassword: "",
     },
   });
 
   // Form submission handler
-  const onSubmit = (data: { email: string; password: string; confirmPassword: string }) => {
-    console.log('Form Data:', data);
-    // Handle signup logic here (e.g., API call)
-    navigate('/dashboard'); // Navigate to dashboard after successful signup
+  const onSubmit = (data: {
+    email: string;
+    password: string;
+    confirmPassword: string;
+  }) => {
+    console.log("Form Data:", data);
+    handleSignup(data);
   };
 
   return (
-    <Paper className="p-8 shadow-lg rounded-xl max-w-sm mx-auto mt-16">
-      <Typography variant="h5" className="text-center mx-6 mb-3 font-semibold">
-        Sign Up
-      </Typography>
+    <div className="p-8 shadow-lg rounded-xl max-w-sm mx-auto my-16">
+      <div className="flex justify-center">
+        <span className="text-center mx-6 mb-3 font-semibold text-[28px]">
+          Sign Up
+        </span>
+      </div>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <Box className="space-y-4">
@@ -113,13 +119,16 @@ const SignupForm = () => {
       {/* Login Link */}
       <Box className="mt-4 text-center">
         <Typography variant="body2" className="text-gray-600">
-          Already have an account?{' '}
-          <span className="text-blue-500 hover:underline cursor-pointer" onClick={() => navigate('/login')}>
+          Already have an account?{" "}
+          <span
+            className="text-blue-500 hover:underline cursor-pointer"
+            onClick={() => navigate("/")}
+          >
             Login
           </span>
         </Typography>
       </Box>
-    </Paper>
+    </div>
   );
 };
 

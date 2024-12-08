@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import api from "../axios"; // Adjust as necessary
 import { OverlaidSpinner } from "../components/Shared";
+import { useAppContext } from "../context/AppContex";
 
 interface ProtectedRouteProps {
   element: JSX.Element;
@@ -9,7 +10,8 @@ interface ProtectedRouteProps {
 
 const ProtectedRoute = ({ element }: ProtectedRouteProps) => {
   const [loading, setLoading] = useState(true);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const { isAuthenticated, setIsAuthenticated } = useAppContext();
 
   useEffect(() => {
     // Make a request to check if the user is authenticated

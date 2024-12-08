@@ -26,14 +26,16 @@ const LoginForm = () => {
   // Form submission handler
   const onSubmit = async (data: ILoginForm) => {
     console.log("Form Data:", data);
-    const loading = handleLogin(data);
+    handleLogin(data);
   };
 
   return (
-    <Paper className="p-8 shadow-lg rounded-xl  max-w-sm mx-auto mt-16">
-      <Typography variant="h5" className="text-center mx-6 mb-3 font-semibold">
-        Login
-      </Typography>
+    <div className="p-8 shadow-lg rounded-xl max-w-sm mx-auto my-16">
+      <div className="flex justify-center">
+        <span className="text-center mx-6 mb-3 font-semibold text-[28px]">
+          Login
+        </span>
+      </div>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <Box className="space-y-4">
@@ -96,7 +98,7 @@ const LoginForm = () => {
           </span>
         </Typography>
       </Box>
-    </Paper>
+    </div>
   );
 };
 

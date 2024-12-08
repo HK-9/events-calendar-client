@@ -8,7 +8,7 @@ import ArrowRight from "@mui/icons-material/ArrowRight";
 import MoveUpIcon from "@mui/icons-material/MoveUp";
 import Add from "@mui/icons-material/Add";
 
-import { useCalendarContext } from "../CalanderContex";
+import { useCalendarContext } from "../CalendarContext";
 
 interface INavigationProps {
   toggle: () => void;
@@ -18,15 +18,18 @@ const Navigation: FC<INavigationProps> = ({ toggle }) => {
   const { currentWeek, setCurrentWeek, days } = useCalendarContext();
 
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between items-center">
       <div className="flex items-center mb-4 gap-3">
-        <Button
-          variant="text"
-          startIcon={<MoveUpIcon />}
-          onClick={() => setCurrentWeek(new Date())}
-        >
-          Today
-        </Button>
+        <Tooltip title="Switch to current week">
+          <Button
+            variant="text"
+            color="success"
+            startIcon={<MoveUpIcon />}
+            onClick={() => setCurrentWeek(new Date())}
+          >
+            Today
+          </Button>
+        </Tooltip>
         <Tooltip title="Go to previous week">
           <IconButton
             onClick={() =>
@@ -53,14 +56,16 @@ const Navigation: FC<INavigationProps> = ({ toggle }) => {
           </IconButton>
         </Tooltip>
       </div>
-      <Button
-        color="success"
-        variant="outlined"
-        startIcon={<Add />}
-        onClick={toggle}
-      >
-        New Event
-      </Button>
+      <div>
+        <Button
+          color="success"
+          variant="contained"
+          startIcon={<Add />}
+          onClick={toggle}
+        >
+          New Event
+        </Button>
+      </div>
     </div>
   );
 };
