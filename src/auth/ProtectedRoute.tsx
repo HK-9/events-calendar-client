@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
-import api from "../axios"; // Adjust as necessary
-import { OverlaidSpinner } from "../components/Shared";
+import api from "../axios";
 import { useAppContext } from "../context/AppContex";
 
 interface ProtectedRouteProps {

@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
-import { loginSchema } from "./login.schema"; // Assuming you have a login schema defined
-import { Box, TextField, Button, Typography, Paper } from "@mui/material";
+import { loginSchema } from "./login.schema";
+import { Box, TextField, Button, Typography } from "@mui/material";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 import { ILoginForm } from "../../types/auth";

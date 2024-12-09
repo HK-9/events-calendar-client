@@ -10,7 +10,6 @@ import DaysHeaderBar from "./components/DaysHeaderBar";
 import CalendarGrid from "./components/CalendarGrid";
 
 const Calendar = () => {
-  // const [currentWeek, setCurrentWeek] = useState(new Date());
   const [open, { toggle }] = useToggle(false);
   const { data: events, getMyEvents, loading } = useGetCalendarEvents();
 

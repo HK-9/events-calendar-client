@@ -7,7 +7,6 @@ import { signupSchema } from "./signup.schema";
 import { useAuthActions } from "../../hooks/use-auth-actions.hook";
 
 // Define the signup schema for validation
-
 const SignupForm = () => {
   const { handleSignup } = useAuthActions();
   const navigate = useNavigate();

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   Avatar,
   Box,
@@ -10,8 +10,6 @@ import {
 } from "@mui/material";
 import { useGetUser } from "../../hooks/use-get-user.hook";
 import { useLogout } from "../../hooks/use-logout.hook";
-import { useAuthActions } from "../../hooks/use-auth-actions.hook";
-import { useAppContext } from "../../context/AppContex";
 import { stringAvatar } from "../../helpers/utils";
 
 const UserAvatarSetting: React.FC = () => {

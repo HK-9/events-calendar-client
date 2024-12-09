@@ -1,6 +1,5 @@
 import * as yup from 'yup';
 
-// Define the login schema for validation
 export const loginSchema = yup.object().shape({
   email: yup
     .string()

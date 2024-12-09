@@ -1,6 +1,6 @@
 import { useState, useCallback, useMemo } from "react";
 import { useAlert } from "./use-message-bar.hook";
-import api from "../axios"; // Adjust the API import as needed
+import api from "../axios";
 import { IDBEventData } from "../types/forms";
 
 const useGetCalendarEvents = () => {

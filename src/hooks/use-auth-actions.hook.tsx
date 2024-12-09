@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ILoginForm, ISignupForm } from "../types/auth"; // Add ISignupForm for type safety
+import { ILoginForm, ISignupForm } from "../types/auth";
 import { useNavigate } from "react-router-dom";
 import api from "../axios";
 import { useAlert } from "./use-message-bar.hook";
@@ -45,7 +45,7 @@ export const useAuthActions = () => {
   const handleSignup = async (signupForm: ISignupForm) => {
     try {
       setLoading(true);
-      const res = await api.post("/auth/register", signupForm); // Assuming your sign-up endpoint is /auth/register
+      const res = await api.post("/auth/register", signupForm);
       if (res.status === 201) {
         showAlert("Signup Successful", "success");
         navigate("/");
